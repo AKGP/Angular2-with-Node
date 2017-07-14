@@ -1,0 +1,30 @@
+{
+  "name": "mean-app",
+  "version": "1.0.0",
+  "description": "Learning The Angular2 with Node Server.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AKGP/Angular2-with-Node.git"
+  },
+  "keywords": [
+    "Mean",
+    "Stack",
+    "Angular",
+    "Appliccation"
+  ],
+  "author": "Ajay Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AKGP/Angular2-with-Node/issues"
+  },
+  "homepage": "https://github.com/AKGP/Angular2-with-Node#readme",
+  "dependencies": {
+    "@angular/cli": "^1.2.1",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.2"
+  }
+}
