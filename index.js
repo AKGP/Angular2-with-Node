@@ -1,23 +1,17 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
-const dbConfig = require('./config/dbConfig.js');
 const path = require('path'); 
-mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.uri,(err)=>{
-    if(err){
-        console.log(err);
-    }
-    else{
-        console.log("Db Connected");
-        // console.log("Secret Key:"+dbConfig.secret);
-    }
-});
+const mysql = require('mysql');
+const dbConfig = require('./config/dbConfig');
+const router = express.Router();
+var api = require('./routes/api')(router);
+
 
 app.use(express.static(__dirname+'/client/dist'))
+app.use('/api',api);    
 
 app.get('*',(req,res)=>{
-    res.sendFile(path.join(__dirname+'client/dist/index.html'));
+    res.sendFile(path.join(__dirname+'/client/dist/index.html'));
 })
 
 
