@@ -14,9 +14,28 @@ connection.connect();
 
 module.exports = (router)=>{
     router.post('/register',(req,res)=>{
-        
-        res.json(req.body.firstname);
+        // console.log(req.body);
+        var data = {
+            firstname:req.body.firstname,
+            // username:req.body.username,
+            password:req.body.password,
+            email:req.body.email,
+            // contact:req.body.contact,
+            // confirmpwd:req.body.confirmpwd
+        }
+        // console.log(data);
+        const queryToStore = "INSERT INTO user SET ?";
+        connection.query(queryToStore, data, function(err,result){
+            if(err){
+                throw err;
+            }
+        });
     });
 
+    router.get('/dashboard',(req,res)=>{
+        connection.query("SELECT * FROM user",function(err,result,field){
+            res.json(result);
+        });
+});
     return router;
 }

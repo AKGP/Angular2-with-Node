@@ -4,11 +4,22 @@ const path = require('path');
 const mysql = require('mysql');
 const dbConfig = require('./config/dbConfig');
 const router = express.Router();
-var api = require('./routes/api')(router);
+const api = require('./routes/api')(router);
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 
+
+
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json());
+app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(express.static(__dirname+'/client/dist'))
-app.use('/api',api);    
+app.use('/api',api);  
+
+
+
+
 
 app.get('*',(req,res)=>{
     res.sendFile(path.join(__dirname+'/client/dist/index.html'));
