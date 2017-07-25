@@ -1,0 +1,7 @@
+varnish 
+redis 
+memcached - 
+->used by most of the websites like facebook, twitter, reddit, youtube its somple and effective.
+->supports many sockets.
+->"In-Memory" distributed hash table service.
+-> commands like get, set, delete etc

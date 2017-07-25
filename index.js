@@ -7,15 +7,19 @@ const router = express.Router();
 const api = require('./routes/api')(router);
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const memcached = require('memcached');
 
-
+const caching = require('./caching/cache-server')
 
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(express.static(__dirname+'/client/dist'))
-app.use('/api',api);  
+app.use('/api',api); 
+
+// caching();
+
 
 
 
